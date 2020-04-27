@@ -58,9 +58,6 @@ header {
 .logo {
     width: 40px;
 }
-.nav a {
-    text-align: left;
-}
 
 nav {
     height: 7.2rem;
@@ -153,8 +150,9 @@ nav::before {
 .hero {
     width: 100%;
     height: 88vh;
-    background: url('img/main/main.jpg');
+    background: url('img/main/main.jpg') center;
     background-size: cover;
+    background-color: var(--main-font-color-dark);
     display: flex;
     align-items: center;
     text-align: right;
@@ -167,6 +165,9 @@ nav::before {
     font-weight: 400;
     line-height: 0.2;
     letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeUp 1s forwards;
+    animation-delay: 0.5s;
 }
 
 .headline {
@@ -174,6 +175,7 @@ nav::before {
     font-size: 3.7rem;
     font-family: var(--secondary-font);
     line-height: 0.2;
+    animation: scale 1s forwards;
 }
 
 .separator {
@@ -189,6 +191,15 @@ nav::before {
     color: #fff;
     border-bottom: 3px solid #fff;
     position: relative;
+    opacity: 0;
+    animation: grow 2s forwards;
+    animation-delay: 0.8s;
+}
+
+.single-animation {
+    opacity: 0;
+    animation: fadeDown 0.5s forwards;
+    animation-delay: 1.5s;
 }
 
 .line-right::before, .line-left::before {
@@ -338,6 +349,7 @@ footer {
     color: #fff;
     font-size: 2rem;
     padding: 2rem;
+    animation: scrollUp 2s infinite;
 }
 
 .footer-content {
@@ -362,7 +374,7 @@ footer {
 
 .social-icons {
     list-style: none;
-    margin-bottom: 5.4rem;
+    margin-bottom: 2.4rem;
     display: flex;
     justify-content: center;
     margin-left: -4rem;
@@ -407,4 +419,148 @@ footer {
     margin-left: 27.5rem;
     cursor: pointer;
     transition: color 0.4s;
+}
+
+/*=== Media Queries === */
+@media only screen and (min-width: 900px) {
+    section {
+        padding: 7rem 0.2rem;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav {
+        justify-content: space-between;
+    }
+
+    .nav-list {
+        position: initial;
+        width: initial;
+        max-width: 900px;
+        height: initial;
+        background-color: transparent;
+        padding: 0;
+        justify-content: initial;
+        flex-direction: row;
+        transform: initial;
+        margin-left: 55%;
+        transition: initial;
+        overflow-x: initial;
+    }
+
+    .nav-item {
+        margin: 0 5%;
+        border: none;
+    }
+
+    .nav-item:last-child {
+        margin-right: 0;
+    }
+
+    .active {
+        position: relative;
+    }
+
+    .active::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        left: 0;
+        bottom: -3px;
+    }
+
+    .shop-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .shop-info > div {
+        flex: 1;
+    }
+
+    .padding-right {
+        padding-right: 7rem;
+    }
+
+    .footer-content {
+        max-width: 100rem;
+        margin: auto;
+    }
+
+    .footer-content-about {
+        max-width: 95rem;
+        margin: 0 auto 2.4rem;
+    }
+
+    .footer-content-divider {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .newsletter-btn {
+        margin-left: 15rem;
+    }
+
+    .social-media, .newsletter-form {
+        width: 100%;
+        max-width: 27.3rem;
+    }
+}
+
+/*=== Animations ===*/
+@keyframes fadeUp {
+    0%{
+        transform: translateY(4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scale {
+    0%{
+        transform: scale(2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes grow {
+    0%{
+        width: 0;
+    }
+    100% {
+        opacity: 1;
+        width: 100%;;
+    }
+}
+
+@keyframes fadeDown {
+    0%{
+        transform: translateY(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollUp {
+    0%{
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
 }
